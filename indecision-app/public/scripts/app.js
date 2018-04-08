@@ -1,49 +1,48 @@
 "use strict";
 
-console.log("React dom");
-
-var userName = "Jai Singhal";
-var age = 20;
-var locations = "Jaipur/India";
-
-var user = {
-    "name": userName,
-    "age": age,
-    "location": locations
+var count = 0;
+var addOne = function addOne() {
+    ++count;
+    renderCounterApp();
 };
-
-function getLocation(location) {
-    if (location) return React.createElement(
-        "p",
-        null,
-        "Location: ",
-        location
-    );
-    return React.createElement("p", null);
-}
-
-var template2 = React.createElement(
-    "div",
-    null,
-    React.createElement(
-        "h1",
-        null,
-        "Name: ",
-        user.name ? user.name : "None"
-    ),
-    user.age && user.age > 18 && React.createElement(
-        "p",
-        null,
-        "Age: ",
-        user.age
-    ),
-    React.createElement(
-        "p",
-        null,
-        getLocation(user.location)
-    )
-);
+var subOne = function subOne() {
+    --count;
+    renderCounterApp();
+};
+var reset = function reset() {
+    count = 0;
+    renderCounterApp();
+};
 
 var appRoot = document.getElementById("app");
 
-ReactDOM.render(template2, appRoot);
+var renderCounterApp = function renderCounterApp() {
+    var template = React.createElement(
+        "div",
+        null,
+        React.createElement(
+            "h1",
+            null,
+            " Count: ",
+            count
+        ),
+        React.createElement(
+            "button",
+            { id: "addCount", onClick: addOne, className: "btn btn-primary" },
+            "+1"
+        ),
+        React.createElement(
+            "button",
+            { id: "addCount", onClick: subOne, className: "btn btn-primary" },
+            "-1"
+        ),
+        React.createElement(
+            "button",
+            { id: "addCount", onClick: reset, className: "btn btn-primary" },
+            "reset"
+        )
+    );
+    ReactDOM.render(template, appRoot);
+};
+
+renderCounterApp();
