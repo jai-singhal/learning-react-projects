@@ -1,95 +1,45 @@
 "use strict";
 
-var app = {
-    name: "Indecision app",
-    subtitle: "Put your life in the hands of computer",
-    options: []
-};
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var removeAll = function removeAll() {
-    app.options = [];
-    renderIndecisionApp();
-};
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var onSubmitFunction = function onSubmitFunction(e) {
-    e.preventDefault();
-    var optionVal = e.target.elements.option.value;
-    if (optionVal) {
-        app.options.push(optionVal);
-        e.target.elements.option.value = "";
-        renderIndecisionApp();
+var Person = function () {
+    function Person(name, age) {
+        _classCallCheck(this, Person);
+
+        this.name = name;
+        this.age = age;
     }
-};
 
-var makeRandomDecision = function makeRandomDecision() {
-    var randNo = Math.floor(Math.random() * app.options.length);
-    var option = app.options[randNo];
-    alert(option);
-};
+    _createClass(Person, [{
+        key: "printName",
+        value: function printName() {
+            console.log(this.name);
+        }
+    }, {
+        key: "printAge",
+        value: function printAge() {
+            console.log(this.age);
+        }
+    }, {
+        key: "getDescription",
+        value: function getDescription() {
+            return "His name is: ${this.name} and he is ${this.age} year(s) old";
+        }
+    }]);
 
-var appRoot = document.getElementById("app");
+    return Person;
+}();
 
-var renderIndecisionApp = function renderIndecisionApp() {
-    var template = React.createElement(
-        "div",
-        null,
-        React.createElement(
-            "div",
-            null,
-            React.createElement(
-                "h1",
-                null,
-                app.name
-            ),
-            React.createElement(
-                "p",
-                null,
-                app.subtitle
-            ),
-            React.createElement(
-                "button",
-                { onClick: makeRandomDecision, disabled: app.options.length == 0 ? true : false },
-                "what should I choose?"
-            ),
-            React.createElement(
-                "button",
-                { onClick: removeAll },
-                "Remove all"
-            ),
-            app.options.length == 0 ? React.createElement(
-                "p",
-                null,
-                "No options"
-            ) : React.createElement(
-                "p",
-                null,
-                "Here all are your options"
-            ),
-            React.createElement(
-                "ol",
-                null,
-                app.options.map(function (number) {
-                    return React.createElement(
-                        "li",
-                        { key: number },
-                        "Item ",
-                        number
-                    );
-                })
-            )
-        ),
-        React.createElement(
-            "form",
-            { onSubmit: onSubmitFunction },
-            React.createElement("input", { type: "text", name: "option" }),
-            React.createElement(
-                "button",
-                { type: "submit" },
-                "Add Option"
-            )
-        )
-    );
-    ReactDOM.render(template, appRoot);
-};
+var p = new Person("Jai", 20);
+console.log(p);
+p.printName();
+p.printAge();
 
-renderIndecisionApp();
+var q = new Person("Deepak", 22);
+console.log(q);
+q.printName();
+q.printAge();
+
+console.log(p.getDescription());

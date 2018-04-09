@@ -55,9 +55,3 @@ const renderIndecisionApp = () => {
 };
 
 renderIndecisionApp();
-
-
-
-
-
-
