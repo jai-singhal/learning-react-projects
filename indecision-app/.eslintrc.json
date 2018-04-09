@@ -6,6 +6,7 @@
     },
     "extends": "eslint:recommended",
     "parserOptions": {
+        "ecmaVersion": 8,
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
             "jsx": true
@@ -37,12 +38,12 @@
         "no-catch-shadow": "off",
         "no-class-assign": "error",
         "no-cond-assign": "error",
-        "no-confusing-arrow": "off"
+        "no-confusing-arrow": "off",
+        "no-unused-vars": "off"
     },
     
     "globals": {
         "ReactDOM": true,
-        "React": true,
-        "console": true   
+        "React": true
     }
 }
