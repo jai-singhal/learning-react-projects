@@ -1,6 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { IndecisionApp } from "./components/indecsion-app";
 
-const template = <p>HI theere</p>;
+const JSX = (
+    <IndecisionApp options={["Learn C++ effectively", "Learn Algorithms"]} />
+);
 
-ReactDOM.render(template, document.getElementById("app"));
+const appId = document.getElementById("app");
+ReactDOM.render(JSX, appId);
