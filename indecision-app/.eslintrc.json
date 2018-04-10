@@ -39,7 +39,8 @@
         "no-class-assign": "error",
         "no-cond-assign": "error",
         "no-confusing-arrow": "off",
-        "no-unused-vars": "off"
+        "no-unused-vars": "off",
+        "no-undef": "off"
     },
     
     "globals": {
