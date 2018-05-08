@@ -6,7 +6,7 @@ import AddOption from "./add-option.js";
 
 export class IndecisionApp extends React.Component {
     state = {
-        options: props.options
+        options: this.props.options
     };
 
     handleRemoveAll = () => {
